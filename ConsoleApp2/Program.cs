@@ -170,6 +170,20 @@ class Program
             Console.WriteLine($"El numero aureo del numero {num} es {resultado}");
         }
     }
+
+    public static void ContarVocales(string palabra)
+    {
+       string palabraN = palabra.ToLower().Trim().Replace(" ","");
+        int contador = 0;
+        for (int i = 0; i < palabraN.Length; i++)
+        {
+            if (palabraN[i] == 'a' || palabraN[i]=='e' || palabraN[i] == 'i' || palabraN[i]=='o' || palabraN[i] =='u' )
+            {
+                contador++;
+            }
+        }
+        Console.WriteLine($"el numero de vocales en {palabra} es: {contador} ");
+    }
     static void Main(string[] args)
     {
         int[,] arrBi = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 } };
@@ -184,5 +198,6 @@ class Program
         EncontrarNumArrBidimensional(arrBi, 12);
         EncontrarFactorial(4);
         EncontrarFibonacci(45);
+        ContarVocales("tetaa");
     }
 }
