@@ -1,7 +1,18 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using System;
 
 class Program
 {
+    public static void ArrayReverse(int[] arr)
+    {
+            int[] arr2 = new int[arr.Length];
+        for(int i = 0;i< arr.Length;i++)
+        {
+
+            arr2[arr.Length -i -1] = arr[i];
+        }
+        Console.WriteLine($"El nuevo array es: "+ string.Join(", ",arr2));
+    }
     public static void FindNumPrimo(int numPrimo)
     {
         if(numPrimo <= 1)
@@ -78,12 +89,27 @@ class Program
         
     }
 
+    public static void SumarDigitos(int num)
+    {
+
+        string newNum = Convert.ToString(num);
+        int sumDig = 0;
+        foreach(char i in newNum)
+        {
+            int IntNum = i - '0';
+            sumDig += IntNum;
+
+        }
+        Console.WriteLine($"La suma es {sumDig}");
+    }
     static void Main( string[] args )
     {
-        int[] arr = [1,2,3,4,5];
+        int[] arr = [1,2,3,4,5,12,22];
         FindMax(arr);
         FindMin(arr);
         FindMaxSecondNum(arr);
         FindNumPrimo(4);
+        ArrayReverse(arr);
+        SumarDigitos(12);
     }
 }
