@@ -2,6 +2,33 @@
 
 class Program
 {
+    public static void FindNumPrimo(int numPrimo)
+    {
+        if(numPrimo <= 1)
+        {
+            Console.WriteLine($"El numero {numPrimo} no es primo");
+        }
+
+        bool esNumPrimo = true;
+        for (int i = 2; i <= Math.Sqrt(numPrimo); i++)
+        {
+            if(numPrimo % i ==0)
+            {
+                esNumPrimo = false;
+                break;
+            }
+        }
+        if (esNumPrimo)
+        {
+            Console.WriteLine($"El número {numPrimo} es Primo");
+        }
+        else
+        {
+            Console.WriteLine($"El número {numPrimo} no es Primo");
+        }
+
+
+    }
     public static void FindMaxSecondNum(int[] arr)
     {
         int Maxnum = int.MinValue;
@@ -57,5 +84,6 @@ class Program
         FindMax(arr);
         FindMin(arr);
         FindMaxSecondNum(arr);
+        FindNumPrimo(4);
     }
 }
