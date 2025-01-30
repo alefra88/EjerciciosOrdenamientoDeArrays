@@ -161,7 +161,7 @@ class Program
         else
         {
             int a = 0, b = 1, resultado = 0;
-            for(int i = 2;i <= num;i++)
+            for (int i = 2; i <= num; i++)
             {
                 resultado = a + b;
                 a = b;
@@ -173,11 +173,11 @@ class Program
 
     public static void ContarVocales(string palabra)
     {
-       string palabraN = palabra.ToLower().Trim().Replace(" ","");
+        string palabraN = palabra.ToLower().Trim().Replace(" ", "");
         int contador = 0;
         for (int i = 0; i < palabraN.Length; i++)
         {
-            if (palabraN[i] == 'a' || palabraN[i]=='e' || palabraN[i] == 'i' || palabraN[i]=='o' || palabraN[i] =='u' )
+            if (palabraN[i] == 'a' || palabraN[i] == 'e' || palabraN[i] == 'i' || palabraN[i] == 'o' || palabraN[i] == 'u')
             {
                 contador++;
             }
@@ -189,9 +189,9 @@ class Program
     {
         char[] arrInvertido = new char[palabra.Length];
 
-        for(int i = 0;i < palabra.Length;i++)
+        for (int i = 0; i < palabra.Length; i++)
         {
-            arrInvertido[palabra.Length -i -1] = palabra[i];
+            arrInvertido[palabra.Length - i - 1] = palabra[i];
         }
         Console.WriteLine($"La palabra invertida es: {new string(arrInvertido)}");
     }
@@ -199,13 +199,13 @@ class Program
     public static void EncontrarNumPerfecto(int num)
     {
         int sumarDivisores = 0;
-        for(int i = 1;i<=num/2;i++)
+        for (int i = 1; i <= num / 2; i++)
         {
-            if(num % i == 0)
+            if (num % i == 0)
             {
                 sumarDivisores += i;
             }
-            if(sumarDivisores == num)
+            if (sumarDivisores == num)
             {
                 Console.WriteLine($"El numero {num} es perfecto");
             }
@@ -217,7 +217,7 @@ class Program
     public static void SumarNumerosNaturales(int num)
     {
         int sumNumNat = 0;
-        for(int i = 1; i<=num;i++)
+        for (int i = 1; i <= num; i++)
         {
             sumNumNat += i;
         }
@@ -228,15 +228,15 @@ class Program
     public static void NoDuplicados(int[] num)
     {
         HashSet<int> list = new HashSet<int>(num);
-        Console.WriteLine("La nueva lista es: " + string.Join(",",list));
+        Console.WriteLine("La nueva lista es: " + string.Join(",", list));
     }
 
     public static void NoDuplicadosSinHashSet(int[] num)
     {
         List<int> numSinRepetir = new List<int>();
-        for(int i = 1;i<num.Length;i++)
+        for (int i = 1; i < num.Length; i++)
         {
-            if(!numSinRepetir.Contains(num[i]))
+            if (!numSinRepetir.Contains(num[i]))
             {
                 numSinRepetir.Add(num[i]);
             }
@@ -246,21 +246,21 @@ class Program
 
     public static void Sort(int[] num)
     {
-  
-        for(int i = 0;i<num.Length -1;i++)
+
+        for (int i = 0; i < num.Length - 1; i++)
         {
-            for(int j = 0;j<num.Length -1 -i;j++)
+            for (int j = 0; j < num.Length - 1 - i; j++)
             {
-                if (num[j]>num[j +1])
+                if (num[j] > num[j + 1])
                 {
                     int temp = num[j];
                     num[j] = num[j + 1];
                     num[j + 1] = temp;
                 }
-                
+
             }
         }
-        Console.WriteLine($"la nueva lista burbuja es: " + string.Join(",",num));
+        Console.WriteLine($"la nueva lista burbuja es: " + string.Join(",", num));
 
     }
 
@@ -284,13 +284,41 @@ class Program
 
     }
 
+
+    public static void OrdenarEliminarNum(int[] num)
+    {
+        List<int> numUnico = new List<int>();
+        foreach(int i in num)
+        {
+            if(!numUnico.Contains(i))
+            {
+                numUnico.Add(i);
+            }
+        }
+        int numLen = numUnico.Count;
+        for (int j = 0; j < numLen - 1; j++)
+        {
+            for (int k = 0; k < numLen - j -1; k++)
+            {
+                if (numUnico[k] > numUnico[k + 1])
+                {
+                    int temp = numUnico[k];
+                    numUnico[k] = numUnico[k + 1];
+                    numUnico[k + 1] = temp;
+                }
+            }
+        }
+
+        Console.WriteLine($"La lista generada es: " + string.Join(",", numUnico));
+    }
+
     static void Main(string[] args)
     {
         int[,] arrBi = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 } };
         int[] arr = [1, 2, 3, 4, 5, 12, 22];
-        int[] arrEje = [ 100,2, 7, 5, 12,68, 22];
+        int[] arrEje = [100, 2, 7, 5, 12, 68, 22];
 
-        int[] arrNumRep = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5];
+        int[] arrNumRep = [8, 8, 7, 7, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5];
         FindMax(arr);
         FindMin(arr);
         FindMaxSecondNum(arr);
@@ -309,5 +337,6 @@ class Program
         NoDuplicadosSinHashSet(arrNumRep);
         Sort(arrEje);
         SortDesc(arrEje);
+        OrdenarEliminarNum(arrNumRep);
     }
 }
