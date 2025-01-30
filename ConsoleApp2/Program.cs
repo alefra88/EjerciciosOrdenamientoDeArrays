@@ -5,17 +5,17 @@ class Program
 {
     public static void ArrayReverse(int[] arr)
     {
-            int[] arr2 = new int[arr.Length];
-        for(int i = 0;i< arr.Length;i++)
+        int[] arr2 = new int[arr.Length];
+        for (int i = 0; i < arr.Length; i++)
         {
 
-            arr2[arr.Length -i -1] = arr[i];
+            arr2[arr.Length - i - 1] = arr[i];
         }
-        Console.WriteLine($"El nuevo array es: "+ string.Join(", ",arr2));
+        Console.WriteLine($"El nuevo array es: " + string.Join(", ", arr2));
     }
     public static void FindNumPrimo(int numPrimo)
     {
-        if(numPrimo <= 1)
+        if (numPrimo <= 1)
         {
             Console.WriteLine($"El numero {numPrimo} no es primo");
         }
@@ -23,7 +23,7 @@ class Program
         bool esNumPrimo = true;
         for (int i = 2; i <= Math.Sqrt(numPrimo); i++)
         {
-            if(numPrimo % i ==0)
+            if (numPrimo % i == 0)
             {
                 esNumPrimo = false;
                 break;
@@ -46,19 +46,19 @@ class Program
         int MaxSecondNum = int.MinValue;
         for (int i = 1; i < arr.Length; i++)
         {
-            
+
             if (arr[i] > Maxnum)
             {
                 MaxSecondNum = Maxnum;
                 Maxnum = arr[i];
-                
+
             }
-            else if (arr[i] > MaxSecondNum && arr[i]< Maxnum)
+            else if (arr[i] > MaxSecondNum && arr[i] < Maxnum)
             {
                 MaxSecondNum = arr[i];
             }
-           
-        }        
+
+        }
         Console.WriteLine($"El segundo mayor numero es {MaxSecondNum}");
     }
     public static void FindMax(int[] arr)
@@ -86,7 +86,7 @@ class Program
             }
         }
         Console.WriteLine($"El numero menor es {menor}");
-        
+
     }
 
     public static void SumarDigitos(int num)
@@ -94,7 +94,7 @@ class Program
 
         string newNum = Convert.ToString(num);
         int sumDig = 0;
-        foreach(char i in newNum)
+        foreach (char i in newNum)
         {
             int IntNum = i - '0';
             sumDig += IntNum;
@@ -106,7 +106,7 @@ class Program
     public static void DetectarPalindromo(string palabra)
     {
         //string PalabraTratada = new string(palabra.ToLower().Where(char.IsLetterOrDigit).ToArray());
-        string PalabraTratada = palabra.ToLower().Trim().Replace(" ","");
+        string PalabraTratada = palabra.ToLower().Trim().Replace(" ", "");
         for (int i = 0, j = PalabraTratada.Length - 1; i < j; i++, j--)
         {
             if (PalabraTratada[i] != PalabraTratada[j])
@@ -115,11 +115,65 @@ class Program
                 return;
             }
         }
-                Console.WriteLine($"La palabra {palabra} es palindromo");
+        Console.WriteLine($"La palabra {palabra} es palindromo");
     }
-    static void Main( string[] args )
+
+    public static void EncontrarNumArrBidimensional(int[,] arr, int num)
     {
-        int[] arr = [1,2,3,4,5,12,22];
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                if (num == arr[i, j])
+                {
+                    Console.WriteLine($"El numero {num} fue encontrado");
+                    return;
+                }
+            }
+        }
+        Console.WriteLine($"El numero {num} no fue encontrado");
+    }
+
+    public static void EncontrarFactorial(int num)
+    {
+        if (num == 0 || num == 1)
+        {
+            Console.WriteLine($"el factorial del {num} es 1");
+        }
+        int resultado = 1;
+        for (int i = 1; i <= num; i++)
+        {
+            resultado *= i;
+        }
+        Console.WriteLine($"El factorial de {num} es {resultado}");
+    }
+
+    public static void EncontrarFibonacci(int num)
+    {
+        if (num == 0)
+        {
+            Console.WriteLine($"El numero fibonnaci de {num} es {num}");
+        }
+        else if (num == 1)
+        {
+            Console.WriteLine($"El numero fibonnaci de {num} es {num}");
+        }
+        else
+        {
+            int a = 0, b = 1, resultado = 0;
+            for(int i = 2;i <= num;i++)
+            {
+                resultado = a + b;
+                a = b;
+                b = resultado;
+            }
+            Console.WriteLine($"El numero aureo del numero {num} es {resultado}");
+        }
+    }
+    static void Main(string[] args)
+    {
+        int[,] arrBi = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 } };
+        int[] arr = [1, 2, 3, 4, 5, 12, 22];
         FindMax(arr);
         FindMin(arr);
         FindMaxSecondNum(arr);
@@ -127,5 +181,8 @@ class Program
         ArrayReverse(arr);
         SumarDigitos(12);
         DetectarPalindromo("anita lava la tina");
+        EncontrarNumArrBidimensional(arrBi, 12);
+        EncontrarFactorial(4);
+        EncontrarFibonacci(45);
     }
 }
