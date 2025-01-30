@@ -312,6 +312,27 @@ class Program
         Console.WriteLine($"La lista generada es: " + string.Join(",", numUnico));
     }
 
+    public static void OrdernarEliminarHashSet(int[] num)
+    {
+        HashSet<int> HashSetnum = new HashSet<int>(num);
+        int[] arrNum = HashSetnum.ToArray();
+
+        int numLen = arrNum.Count();
+        for(int i = 0; i < numLen; i++)
+        {
+            for(int j = 0; j < numLen -j -1; j++)
+            {
+                if (arrNum[j] > arrNum[j +1])
+                {
+                    int temp = arrNum[j];
+                    arrNum[j]=arrNum[j + 1];
+                    arrNum[j+1] = temp;
+                }
+            }
+        }
+        Console.WriteLine($"Nueva lista ordenada usando HashSet: " + string.Join(",", arrNum));
+    }
+
     static void Main(string[] args)
     {
         int[,] arrBi = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 } };
@@ -338,5 +359,6 @@ class Program
         Sort(arrEje);
         SortDesc(arrEje);
         OrdenarEliminarNum(arrNumRep);
+        OrdernarEliminarHashSet(arrNumRep);
     }
 }
