@@ -184,6 +184,18 @@ class Program
         }
         Console.WriteLine($"el numero de vocales en {palabra} es: {contador} ");
     }
+
+    public static void InvertirPalabra(string palabra)
+    {
+        char[] arrInvertido = new char[palabra.Length];
+
+        for(int i = 0;i < palabra.Length;i++)
+        {
+            arrInvertido[palabra.Length -i -1] = palabra[i];
+        }
+        Console.WriteLine($"La palabra invertida es: {new string(arrInvertido)}");
+        Console.ReadLine();
+    }
     static void Main(string[] args)
     {
         int[,] arrBi = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 } };
@@ -198,6 +210,7 @@ class Program
         EncontrarNumArrBidimensional(arrBi, 12);
         EncontrarFactorial(4);
         EncontrarFibonacci(45);
-        ContarVocales("tetaa");
+        ContarVocales("eaa");
+        InvertirPalabra("Hola chavos");
     }
 }
