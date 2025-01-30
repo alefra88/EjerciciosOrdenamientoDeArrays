@@ -194,12 +194,83 @@ class Program
             arrInvertido[palabra.Length -i -1] = palabra[i];
         }
         Console.WriteLine($"La palabra invertida es: {new string(arrInvertido)}");
-        Console.ReadLine();
     }
+
+    public static void EncontrarNumPerfecto(int num)
+    {
+        int sumarDivisores = 0;
+        for(int i = 1;i<=num/2;i++)
+        {
+            if(num % i == 0)
+            {
+                sumarDivisores += i;
+            }
+            if(sumarDivisores == num)
+            {
+                Console.WriteLine($"El numero {num} es perfecto");
+            }
+        }
+        Console.WriteLine($"El numero {num} no es perfecto");
+
+    }
+
+    public static void SumarNumerosNaturales(int num)
+    {
+        int sumNumNat = 0;
+        for(int i = 1; i<=num;i++)
+        {
+            sumNumNat += i;
+        }
+        Console.WriteLine($"la suma es {sumNumNat}");
+
+    }
+
+    public static void NoDuplicados(int[] num)
+    {
+        HashSet<int> list = new HashSet<int>(num);
+        Console.WriteLine("La nueva lista es: " + string.Join(",",list));
+    }
+
+    public static void NoDuplicadosSinHashSet(int[] num)
+    {
+        List<int> numSinRepetir = new List<int>();
+        for(int i = 1;i<num.Length;i++)
+        {
+            if(!numSinRepetir.Contains(num[i]))
+            {
+                numSinRepetir.Add(num[i]);
+            }
+        }
+        Console.WriteLine($"La nueva lista es: " + string.Join(", ", numSinRepetir));
+    }
+
+    public static void Sort(int[] num)
+    {
+  
+        for(int i = 0;i<num.Length -1;i++)
+        {
+            for(int j = 0;j<num.Length -1 -i;j++)
+            {
+                if (num[j]>num[j +1])
+                {
+                    int temp = num[j];
+                    num[j] = num[j + 1];
+                    num[j + 1] = temp;
+                }
+            }
+        }
+        Console.WriteLine($"la nueva lista burbuja es: " + string.Join(",",num));
+
+    }
+
+
     static void Main(string[] args)
     {
         int[,] arrBi = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 } };
         int[] arr = [1, 2, 3, 4, 5, 12, 22];
+        int[] arrEje = [ 100,2, 7, 5, 12,68, 22];
+
+        int[] arrNumRep = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5];
         FindMax(arr);
         FindMin(arr);
         FindMaxSecondNum(arr);
@@ -212,5 +283,10 @@ class Program
         EncontrarFibonacci(45);
         ContarVocales("eaa");
         InvertirPalabra("Hola chavos");
+        EncontrarNumPerfecto(4);
+        SumarNumerosNaturales(3);
+        NoDuplicados(arrNumRep);
+        NoDuplicadosSinHashSet(arrNumRep);
+        Sort(arrEje);
     }
 }
