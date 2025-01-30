@@ -44,7 +44,7 @@ class Program
     {
         int Maxnum = int.MinValue;
         int MaxSecondNum = int.MinValue;
-        for (int i = 1; i < arr.Length; i++)
+        for (int i = 0; i < arr.Length; i++)
         {
 
             if (arr[i] > Maxnum)
