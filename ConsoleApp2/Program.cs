@@ -333,6 +333,22 @@ class Program
         Console.WriteLine($"Nueva lista ordenada usando HashSet: " + string.Join(",", arrNum));
     }
 
+    public static void ArrDiezNum(int[] num)
+    {
+        Dictionary<int,List<int>> diccionario = new Dictionary<int, List<int>>();
+        for(int i =0;i<num.Length;i++)
+        {
+            if(!diccionario.ContainsKey(num[i]))
+            {
+                diccionario[num[i]] = new List<int>();
+            }
+            diccionario[num[i]].Add(i);
+        }
+        foreach(var item in diccionario)
+        {
+            Console.WriteLine($"El indice es {item.Key} su contenido es {string.Join(", ", item.Value)}");
+        }
+    }
     static void Main(string[] args)
     {
         int[,] arrBi = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 } };
@@ -360,5 +376,6 @@ class Program
         SortDesc(arrEje);
         OrdenarEliminarNum(arrNumRep);
         OrdernarEliminarHashSet(arrNumRep);
+        ArrDiezNum(arr);
     }
 }
