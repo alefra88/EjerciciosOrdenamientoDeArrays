@@ -105,20 +105,17 @@ class Program
 
     public static void DetectarPalindromo(string palabra)
     {
-        string PalabraTratada = palabra.ToLower().Trim();
+        //string PalabraTratada = new string(palabra.ToLower().Where(char.IsLetterOrDigit).ToArray());
+        string PalabraTratada = palabra.ToLower().Trim().Replace(" ","");
         for (int i = 0, j = PalabraTratada.Length - 1; i < j; i++, j--)
         {
-            if (palabra[i] != palabra[j])
+            if (PalabraTratada[i] != PalabraTratada[j])
             {
                 Console.WriteLine($"La palabra {palabra} no es palindromo");
                 return;
             }
-            else
-            {
-                Console.WriteLine("La palabra es palindromo");
-                return;
-            }
         }
+                Console.WriteLine($"La palabra {palabra} es palindromo");
     }
     static void Main( string[] args )
     {
@@ -129,6 +126,6 @@ class Program
         FindNumPrimo(4);
         ArrayReverse(arr);
         SumarDigitos(12);
-        DetectarPalindromo("anita lava la tinee");
+        DetectarPalindromo("anita lava la tina");
     }
 }
