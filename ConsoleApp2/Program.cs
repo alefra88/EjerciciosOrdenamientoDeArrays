@@ -92,12 +92,12 @@ class Program
     public static void SumarDigitos(int num)
     {
 
-        string newNum = Convert.ToString(num);
+        string numToString = Convert.ToString(num);
         int sumDig = 0;
-        foreach (char i in newNum)
+        foreach (char i in numToString)
         {
-            int IntNum = i - '0';
-            sumDig += IntNum;
+            int iCharToInt = i - '0';
+            sumDig += iCharToInt;
 
         }
         Console.WriteLine($"La suma es {sumDig}");
